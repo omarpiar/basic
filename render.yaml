@@ -1,12 +1,12 @@
 services:
   - type: web
-    name: basic
+    name: yii2-app-basic
     runtime: php
     buildCommand: |
-      composer install
+      composer install --optimize-autoloader --no-dev
       php yii migrate --interactive=0
     startCommand: >
-      php -S 0.0.0.0:8000 -t web/
+      php -S 0.0.0.0:$PORT -t web/
     env: php
     envVars:
       - key: YII_ENV
