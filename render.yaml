@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: basic
+    runtime: php
+    buildCommand: |
+      composer install
+      php yii migrate --interactive=0
+    startCommand: >
+      php -S 0.0.0.0:8000 -t web/
+    env: php
+    envVars:
+      - key: YII_ENV
+        value: prod
+    healthCheckPath: /site/health
